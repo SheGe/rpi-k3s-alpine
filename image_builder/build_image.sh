@@ -37,8 +37,8 @@ esac
 if [ $BUILD == "yes" ]
 then
   docker run --pull always --rm -it -v "$PWD":/input -v "$PWD"/output:/output --env-file rpi_alpine_k3s_img.env ghcr.io/raspi-alpine/builder
- [ $WRITE == "no" ] && exit 0
-fi  
+  [ $WRITE == "no" ] && exit 0
+fi
 
 if [[ -z $DEV ]]
 then
