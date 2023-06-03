@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"**/ansible/**/*.yml": "ansible",
+		"**/ansible/**/*.yaml": "ansible"
+	},
+	"ansible.python.interpreterPath": "/usr/bin/python3",
+	"ansible.validation.lint.enabled": false
+}
