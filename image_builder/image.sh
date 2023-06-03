@@ -30,7 +30,7 @@ map_to_data(){
     ln -fs ${DATA_DIR}${SRC_PATH} ${ROOTFS_PATH}${SRC_PATH} && echo "Created symlink from ${DATA_DIR}${SRC_PATH} to ${ROOTFS_PATH}${SRC_PATH}"
   done
 }
-  
+
 
 bind_mount(){
   for path in "$@"
@@ -84,7 +84,7 @@ k8s_main(){
   mkdir -p ${ROOTFS_PATH}/etc/rancher
   # chroot_exec rc-update add cgroups default
   chroot_exec rc-update add rpcbind default
-  bind_mount /var/lib /var/log /etc/rancher /etc/iscsi 
+  bind_mount /var/lib /var/log /etc/rancher /etc/iscsi
   install -D ${INPUT_PATH}/bind_mount.sh ${ROOTFS_PATH}/sbin/bindmounts
   sed -i 's;# make sure /data is mounted;/sbin/bindmounts;g' ${ROOTFS_PATH}/etc/init.d/data_prepare
 }
@@ -101,7 +101,7 @@ jump_main(){
   bind_mount /var/lib /var/log /etc/docker
   install -D ${INPUT_PATH}/bind_mount.sh ${ROOTFS_PATH}/sbin/bindmounts
   sed -i 's;# make sure /data is mounted;/sbin/bindmounts;g' ${ROOTFS_PATH}/etc/init.d/data_prepare
- }
+}
 
 if [ ! -z $ROOTFS_PATH ] && [ ! -z $DATAFS_PATH ]
 then

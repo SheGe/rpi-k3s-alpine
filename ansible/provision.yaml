@@ -29,7 +29,7 @@
             dest: "/etc/conf.d/k3s"
           notify:
             - stop k3s
-        
+
         - name: Try to copy iscsid.conf
           copy:
             src: "files/iscsid.conf"
@@ -79,7 +79,7 @@
         msg: "remount {{ remount }}"
 
     - name: cloudflare API secret
-      block:  
+      block:
         - name: create cloudflare API secret
           ansible.builtin.command: /usr/bin/kubectl -n kube-system create secret generic cloudflare-credentials --from-literal=cloudflareApiKey={{ cloudflare_traefik_api_key }}
           when: "'server' in group_names"
@@ -113,7 +113,7 @@
       service:
         name: k3s
         state: stopped
-      
+
 # set motd to something helpful for k8s (like node name, node role, IP address)
 # configure uploading state file to S3
 # set root password
